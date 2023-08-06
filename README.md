@@ -1,4 +1,4 @@
-# RSC Jellyfish Reprogramming Guide
+ # RSC Jellyfish Reprogramming Guide
 
 This is a repository describing how to reprogram the 2023 [Red Society Club](https://discord.gg/thersc) "jellyfish" badge. 
 
@@ -53,7 +53,7 @@ First, you need to tell Arduino IDE where to look for additional board informati
 
 <img src="images/ATTiny85_boardsmanagerURL.png" width="600px" height="auto"/>
 
-Next, you need to install the ATTiny85 library. Go to `Tools > Boards: ... > Boards Manager`. Search for `attiny`. You should get a result published by David A Mellis. Install that (my photo shows mine already installed). You'll probably need to restart the IDE again after this step. 
+Next, you need to install the ATTiny85 library. Go to `Tools > Boards: ... > Boards Manager`. Search for `attiny`. You should get a result published by David A Mellis. Install that library (my photo shows mine already installed) and restart Arduino IDE again. 
 
 <img src="images/ATTiny85_library.png" width="600px" height="auto"/>
 
@@ -72,7 +72,7 @@ If you want to use the Neopixel library, [follow these steps to install it](http
 ---
 
 ### IMPORTANT NOTES
-***I strongly recommend that you do not change the LED brightness unless you are using USB power.*** Read this section to learn about why you don't want too-bright LEDs on battery power. 
+***I strongly recommend that you do not change the LED brightness unless you are using USB power.*** Read this section to learn about why you don't want too-bright LEDs if you are running on battery power. 
 
 #### Current brightness levels: 
 Currently, the LEDs are PWMed to about 1/3 of their full brightness, or a value of 80 out of 255. This is because at DEFCON, most people will be running their badges off of AAA batteries and we're trying to conserve power. And the badges will likely be in the dark, which means we don't need to try so hard to make them look bright. 
@@ -93,7 +93,7 @@ The bigger the difference in voltage, the more current it needs to keep both sid
 
 As the battery drains, the voltage drops and this difference between the battery voltage and the output voltage becomes larger and the components have to 'work' harder to make up for it. More current flowing through components also mean they get hot, particularly the Schottky diodes (which are rated to 1A but will still get hot at lower currents). Battery discharge capacity is not a linear function, either. Battery drainage will occur either way, but you can see how a high brightness setting can create this feedback loop faster than the current brightness setting. 
 
-Compare that to USB where the input voltage is (should be) consistent. Components might still get hot due to lots of current flowing through them, but with a constant input voltage, you won't have to worry about a growing voltage differential. Note though that some devices will not provide more than 500mA of current over USB. 
+Compare that to powering the board via the USB port, where the input voltage is (should be) consistent. Components might still get hot due to lots of current flowing through them, but with a constant input voltage, you won't have to worry about a growing voltage differential. Note though that some devices will not provide more than 500mA of current over USB. 
 
 **TL;DR: A brightness of "80" was chosen because it seemed to be a good trade-off between battery consumption and visual brightness. Powering via batteries is not a simple linear relationship and you should probably keep the brightness below 90 (out of 255). Powering over USB gives you more flexibility.**
 
