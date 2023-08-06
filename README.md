@@ -1,3 +1,5 @@
+# RSC Jellyfish Reprogramming Guide
+
 This is a repository describing how to reprogram the 2023 [Red Society Club](https://discord.gg/thersc) "jellyfish" badge. 
 
 ![](images/preview.png)
