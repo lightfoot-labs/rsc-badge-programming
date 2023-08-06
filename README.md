@@ -1,6 +1,10 @@
-This is a repository describing how to reprogram the 2023 Red Society Club "jellyfish" badge. 
+This is a repository describing how to reprogram the 2023 [Red Society Club](https://discord.gg/thersc) "jellyfish" badge. 
+
+![](images/preview.png)
 
 The jellyfish badge has an ATTiny85 and exposed programming pins. There are other ways of programming it (such as with an [AVR programmer](https://www.sparkfun.com/products/11801)), but this guide uses an Arduino since that's what I had on hand and that's what most other people will likely have access to. 
+
+To read about the board design, check out this [blog post series](https://lightfootlabs.io/blog/rsc-badgelife-journey). 
 
 ## Features
 * 10 programmable RGB LEDs
@@ -13,9 +17,11 @@ You will need an Arduino (I used an Arduino Uno), and a USB cable to connect it 
 
 You will also need 6 jumper wires either soldered to the pins, or you will need a 6-pin connector. Ideally you'd use a 2.54 mm pitch pogo pin connector, but you can also use a 6-pin male header with the same pitch. 
 
-I ordered a pogo pin connector for this project but it never showed up, so I used a 6-pin header instead. If you take this approach make sure you hold the header to the board at an angle so you are making sufficient electrical contact as shown in the photo. 
+I ordered a pogo pin connector for this project but it never showed up, so I used a 6-pin header instead. If you take this approach make sure you hold the header to the board at an angle so you are making sufficient electrical contact as shown in the photo. Not enough solid contact = Arduino IDE will throw errors when you try to program the board. 
 
 ![](images/board_contact.png)
+
+Whichever method you use, keep in mind that you will be providing power to the board through the 5V and GND pins, so be careful about aligning them correctly (so you don't slip and short anything out). 
 
 Here is the board pinout: 
 
@@ -32,12 +38,12 @@ Connect the wires as follows:
 | GND        |           GND              |
 | 5V         |           5V               |
 
-You also need a 10-22uF capacitor between RESET and GND on your Arduino to prevent the Arduino from resetting itself. 
+You also need a 10-22uF capacitor between RESET and GND on your Arduino to prevent the Arduino from resetting itself. You can use a breadboard like a normal person if you want or just put the cap in the Arduino header like so: 
 
 ![](images/arduino_cap.png)
 
 ## Arduino IDE Setup
-If you do not already have Arduino IDE installed, do so here: https://www.arduino.cc/en/software
+If you do not already have Arduino IDE installed, [do so with these instructions](https://www.arduino.cc/en/software). 
 
 Next, you will need to add support for the ATTiny85 in Arduino IDE's board manager. This is a two step process.
 
@@ -59,7 +65,7 @@ Credit: https://www.instructables.com/How-to-Program-an-Attiny85-From-an-Arduino
 Currently, the jellyfish boards are using Adafruit's Neopixel library. If you want to write your own code, that's fine! But the Neopixel library 
 
 ### Neopixels
-If you want to use the Neopixel library, follow the steps here to install it: https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation
+If you want to use the Neopixel library, [follow these steps to install it](https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation). 
 
 ### IMPORTANT NOTES
 **I strongly recommend that you do not change the LED brightness unless you are using USB power. ** Read this section to learn about why you don't want too-bright LEDs on battery power. 
@@ -166,3 +172,5 @@ uint32_t Wheel(byte WheelPos) {
   return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
 }
 ```
+
+Make your changes, and hit the arrow button to program the board (while holding the 6 pin connector or pogo pin connector to the board carefully, as described in the hardware section). Happy programming!
