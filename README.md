@@ -68,7 +68,7 @@ Currently, the jellyfish boards are using Adafruit's Neopixel library. If you wa
 If you want to use the Neopixel library, [follow these steps to install it](https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation). 
 
 ### IMPORTANT NOTES
-**I strongly recommend that you do not change the LED brightness unless you are using USB power. ** Read this section to learn about why you don't want too-bright LEDs on battery power. 
+**I strongly recommend that you do not change the LED brightness unless you are using USB power.** Read this section to learn about why you don't want too-bright LEDs on battery power. 
 
 #### Current brightness levels
 Currently, the LEDs are PWMed to about 1/3 of their full brightness, or a value of 80 out of 255. This is because at DEFCON, most people will be running their badges off of AAA batteries and we're trying to conserve power. And the badges will likely be in the dark, which means we don't need to try so hard to make them look bright. 
@@ -91,7 +91,7 @@ As the battery drains, the voltage drops and this difference between the battery
 
 Compare that to USB where the input voltage (should) be consistent. Components might still get hot due to lots of current flowing through them, but with a constant input voltage, you won't have to worry about a growing voltage differential. Note though that some devices will not provide more than 500mA of current over USB. 
 
-** TL;DR: A brightness of "80" was chosen because it seemed to be a good trade-off between battery consumption and visual brightness. Powering via batteries is not a simple linear relationship and you should probably keep the brightness below 90 (out of 255). Powering over USB gives you more flexibility. **
+**TL;DR: A brightness of "80" was chosen because it seemed to be a good trade-off between battery consumption and visual brightness. Powering via batteries is not a simple linear relationship and you should probably keep the brightness below 90 (out of 255). Powering over USB gives you more flexibility.**
 
 If you are unsure about what to use or this explanation didn't make sense, hit me up on Discord in RSC (#jaime3312). 
 
