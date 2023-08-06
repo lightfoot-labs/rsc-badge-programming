@@ -64,7 +64,7 @@ Now when you view `Tools > Board: ...` you should see ATTiny85 in the list. You 
 Credit: https://www.instructables.com/How-to-Program-an-Attiny85-From-an-Arduino-Uno/  Note: if you are programming an ATTiny85 for the first time you will need to follow steps 3 and 6 in here to burn the bootloader. If you already have a badge with rainbow lights, you can skip this. 
 
 ## Programming
-Currently, the jellyfish boards are using Adafruit's Neopixel library. If you want to write your own code, that's fine! But the Neopixel library 
+Currently, the jellyfish boards are using Adafruit's Neopixel library. If you want to write your own code, that's fine! But the Neopixel library provides a lot of out-of-the-box working examples, and you can find examples of other people's projects online. 
 
 ### Neopixels
 If you want to use the Neopixel library, [follow these steps to install it](https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation). 
@@ -91,9 +91,9 @@ There is a component on the badge called a boost converter, which steps up the v
 
 The bigger the difference in voltage, the more current it needs to keep both sides of the 'equation' equal. 
 
-As the battery drains, the voltage drops and this difference between the battery voltage and the output voltage becomes larger and the components have to 'work' harder to make up for it. More current flowing through components also mean they get hot. Battery discharge capacity is not a linear function. You can see how this can become an undesirable feedback loop, especially when the brightness is turned all the way up. 
+As the battery drains, the voltage drops and this difference between the battery voltage and the output voltage becomes larger and the components have to 'work' harder to make up for it. More current flowing through components also mean they get hot, particularly the Schottky diodes (which are rated to 1A but will still get hot at lower currents). Battery discharge capacity is not a linear function, either. Battery drainage will occur either way, but you can see how a high brightness setting can create this feedback loop faster than the current brightness setting. 
 
-Compare that to USB where the input voltage (should) be consistent. Components might still get hot due to lots of current flowing through them, but with a constant input voltage, you won't have to worry about a growing voltage differential. Note though that some devices will not provide more than 500mA of current over USB. 
+Compare that to USB where the input voltage is (should be) consistent. Components might still get hot due to lots of current flowing through them, but with a constant input voltage, you won't have to worry about a growing voltage differential. Note though that some devices will not provide more than 500mA of current over USB. 
 
 **TL;DR: A brightness of "80" was chosen because it seemed to be a good trade-off between battery consumption and visual brightness. Powering via batteries is not a simple linear relationship and you should probably keep the brightness below 90 (out of 255). Powering over USB gives you more flexibility.**
 
